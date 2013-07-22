@@ -1,24 +1,24 @@
-# Installation du module
+# Ntp [![Build Status](https://travis-ci.org/sipf-infrastructure/ntp.png?branch=master)](https://travis-ci.org/sipf-infrastructure/ntp)
 
-```
+## Installation du module
+
+Dans le répertoire '/etc/puppet/modules', lancez les commandes suivantes :
+```bash
 $ mkdir ntp
 $ cd ntp
-$ git clone https://github.com/sipf-infrastructure/ntp.git
-
+$ git clone https://github.com/sipf-infrastructure/ntp.git .
 ```
 
-# Utilisation
+## Utilisation
 
 Dans le fichier '/etc/puppet/manifests/site.pp', on définit ce qui suit :
-```
-node test {
-	class { 'ntp': }
-
-  # ou
-
-	class { 'ntp':
-		server	=> enable,
-	}
-
+```ruby
+node default {
+  class { 'ntp':
+    server    => 'ntp.example.com',
+  }
 }
 ```
+La configuration en mode 'master' est appliqué si le nom du serveur spécifié (le paramètre **server**) correspond au nom de la machine sur lequel ce module est exécuté.
+
+
