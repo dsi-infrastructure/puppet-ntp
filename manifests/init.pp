@@ -1,13 +1,13 @@
 # class ntp
 #
 
-class ntp($server='disabled') {
+class ntp($server = undef) {
 
   package{'ntp':
     ensure => latest,
   }
 
-  if $server == 'enable' {
+  if $server == $fqdn {
     $servers = ['0.debian.pool.ntp.org iburst',
                 '1.debian.pool.ntp.org iburst',
                 '2.debian.pool.ntp.org iburst',
