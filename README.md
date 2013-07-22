@@ -21,4 +21,6 @@ node default {
 ```
 La configuration en mode 'master' est appliqué si le nom du serveur spécifié (le paramètre **server**) correspond au nom de la machine sur lequel ce module est exécuté.
 
+## A faire
 
+- Prendre en compte la possibilité d'ajouter N serveurs centraux supplémentaires.
