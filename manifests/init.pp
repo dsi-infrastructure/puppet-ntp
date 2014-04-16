@@ -1,20 +1,23 @@
 # class ntp
 #
 
-class ntp($server = undef) {
+class ntp($server = hiera(ntp::server, '')) {
 
   package{'ntp':
     ensure => latest,
   }
 
-  if $server == $fqdn {
+  package{'ntpdate':
+    ensure => latest,
+  }
+
+  if $server == 'enable' {
     $servers = ['0.debian.pool.ntp.org iburst',
                 '1.debian.pool.ntp.org iburst',
                 '2.debian.pool.ntp.org iburst',
                 '3.debian.pool.ntp.org iburst', ]
   } else {
-    $servers = ['1.ntp.srv.gov.pf iburst',
-                '2.ntp.srv.gov.pf iburst', ]
+    $servers = ['time.srv.gov.pf iburst', ]
   }
 
   file { '/etc/ntp.conf':
